@@ -1,6 +1,6 @@
 package Chapter2
 
-object TestFactorial{
+object TestFactorial2{
 
         def fib(x:Int):Int={
         def go(x:Int):Int=
