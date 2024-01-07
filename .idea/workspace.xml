@@ -39,12 +39,22 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.MyMoudle2">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Chapter2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Chapter2.MyMoudle">
     <configuration name="Chapter2.MyMoudle" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Chapter2.MyMoudle" />
       <module name="ScalaProject" />
@@ -124,9 +134,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Chapter2.MyMoudle" />
         <item itemvalue="Application.MyMoudle2" />
         <item itemvalue="Application.TestFactorial2" />
-        <item itemvalue="Application.Chapter2.MyMoudle" />
         <item itemvalue="Application.MyMoudle" />
         <item itemvalue="Application.TestFactorial" />
       </list>
@@ -140,7 +150,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704628167706</updated>
-      <workItem from="1704628169143" duration="197000" />
+      <workItem from="1704628169143" duration="505000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <created>1704628222638</created>
@@ -149,7 +159,28 @@
       <option name="project" value="LOCAL" />
       <updated>1704628222639</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="chapter2">
+      <created>1704628456875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1704628456875</updated>
+    </task>
+    <task id="LOCAL-00003" summary="chapter2">
+      <created>1704628556282</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704628556282</updated>
+    </task>
+    <task id="LOCAL-00004" summary="chapter2">
+      <created>1704628569754</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704628569754</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +211,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="chapter2" />
+    <option name="LAST_COMMIT_MESSAGE" value="chapter2" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
