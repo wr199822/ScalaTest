@@ -1,6 +1,6 @@
 package Chapter2
 
-object MyMoudle2 {
+object MyMoudle {
   def abs(n: Int): Int =
     if (n < 0) -n
     else n
