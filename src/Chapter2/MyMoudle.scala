@@ -30,6 +30,7 @@ object MyMoudle {
   }
 
   def findFirst[A](as: Array[A], p: A => Boolean): Int = {
+    //该注解是确保这个函数是一个尾递归
     @annotation.tailrec
     def loop(n: Int): Int =
       if (n >= as.length) -1
@@ -40,9 +41,28 @@ object MyMoudle {
 
   }
 
+  def isSorted[A](as: Array[A], ordered: (A,A)=> Boolean): Boolean =
+    if (as.length<1) throw new Exception("Array length cannot lt 1")
+    else  ordered(as(0),as(1))
+
+
+  //partiall
+  def partiall[A,B,C](a:A,f:(A,B)=>C):B=>C =
+    (b:B) => f(a,b)
+
+  //2.3
+  def curry[A,B,C](f:(A,B)=>C) : A=>(B=>C) =
+    (a:A) =>(b:B)=> f(a,b)
+
+  //2.4
+  def uncurry[A,B,C](f:A =>B =>C):(A,B) =>C =
+    (a: A, b: B) => f(a)(b)
+
+  def compose[A,B,C](f:B=>C,g:A=>B):A=>C =
+    (a:A)=>f(g(a))
+
   def main(arg: Array[String]): Unit = {
-    println(formatResult("Absolute value", 5, abs))
-    println(formatResult("factorial value", 5, factorial))
+    println( isSorted(Array(1, 2, 3),(x:Int,y:Int)=> x-y>0))
   }
 
 }
