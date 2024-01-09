@@ -41,9 +41,19 @@ object MyMoudle {
 
   }
 
-  def isSorted[A](as: Array[A], ordered: (A,A)=> Boolean): Boolean =
-    if (as.length<1) throw new Exception("Array length cannot lt 1")
-    else  ordered(as(0),as(1))
+  def isSorted[A](as: Array[A], ordered: (A,A)=> Boolean): Boolean ={
+    @annotation.tailrec
+    def loop(n: Int): Boolean = {
+      if (n==as.length) true
+      else if (ordered(as(n-1),as(n))) loop(n + 1)
+      else false
+    }
+
+    if (as.length < 1) throw new Exception("Array length cannot lt 1")
+    else loop(1)
+  }
+
+
 
 
   //partiall
@@ -62,7 +72,7 @@ object MyMoudle {
     (a:A)=>f(g(a))
 
   def main(arg: Array[String]): Unit = {
-    println( isSorted(Array(1, 2, 3),(x:Int,y:Int)=> x-y>0))
+    println( isSorted(Array(3, 2, 1),(x:Int,y:Int)=> x-y>0))
   }
 
 }
