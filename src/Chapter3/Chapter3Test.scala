@@ -1,6 +1,6 @@
 package Chapter3
 
-import Chapter3.List.{drop, dropWhile, setHead, sum, tail}
+import Chapter3.List.{drop, dropWhile, init, setHead, sum, tail}
 
 object Chapter3Test {
   //3.1
@@ -38,6 +38,10 @@ object Chapter3Test {
     val list = List(1, 2, 3, 4, 5,3,5,3)
     val dropWhileList = dropWhile(list,(x:Int)=>x==3)
     println("dropWhileList: "+dropWhileList)
+
+    //3.6
+    val initList = init(List(1,2,3,4,5,6))
+    println("initList: "+initList)
 
 
   }
