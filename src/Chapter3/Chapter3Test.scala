@@ -1,6 +1,6 @@
 package Chapter3
 
-import Chapter3.List.{drop, dropWhile, init, setHead, sum, tail}
+import Chapter3.List.{drop, dropWhile, dropWhileCurry, dropWhileMyShelf, init, setHead, sum, tail}
 
 object Chapter3Test {
   //3.1
@@ -34,14 +34,23 @@ object Chapter3Test {
     var dropList = drop(List(1),2)
     println("dropList: "+dropList)
 
+    //3.5myshelf
+    val list:List[Int] = List(1, 2, 3, 4, 5, 3, 5, 3)
+    val dropWhiles = dropWhileMyShelf(list, (x: Int) => x==3)
+    println("dropWhiles: " + dropWhiles)
+
     //3.5
-    val list = List(1, 2, 3, 4, 5,3,5,3)
-    val dropWhileList = dropWhile(list,(x:Int)=>x==3)
+    val dropWhileList = dropWhile(list,(x:Int)=>x<3)
     println("dropWhileList: "+dropWhileList)
 
     //3.6
     val initList = init(List(1,2,3,4,5,6))
     println("initList: "+initList)
+
+    //3.3.2
+    val xs:List[Int] = List(1,2,3,4,5)
+    val ex1 = dropWhileCurry(xs)(x=>x<4)
+    println("ex1: "+ex1)
 
 
   }

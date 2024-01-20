@@ -53,15 +53,19 @@ object List {
   }
 
   //3.5
-  def dropWhile[A](l:List[A],f:A=>Boolean):List[A] =  l match{
+  def dropWhileMyShelf[A](l:List[A],f:A=>Boolean):List[A] =  l match{
     case Nil => Nil
-    case Cons(head,t)=>
-      if(f(head)){
-        dropWhile(t,f)
-      }else{
-        Cons(head,dropWhile(t,f))
-      }
+    case Cons(head,t) if(f(head))=>  dropWhileMyShelf(t,f)
+    case Cons(head,t) if(!f(head))=> Cons(head,dropWhileMyShelf(t,f))
   }
+
+  //3.5 书上的答案
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] =
+    l match{
+      case Cons(h, t) if f(h) => dropWhile(t, f)
+      case _ => l
+    }
+
 
   def append[A](a1:List[A],a2:List[A]):List[A] = a1 match {
     case Nil => a2
@@ -69,10 +73,38 @@ object List {
   }
 
   //3.6
-  def init[A](l: List[A]): List[A] = l match {
+  def initMyshelf[A](l: List[A]): List[A] = l match {
     case Nil => Nil
     case Cons(_,Nil) => Nil
-    case Cons(h,t) => Cons(h,init(t));
+    case Cons(h,t) => Cons(h,initMyshelf(t));
+  }
+  //3.6 书上答案
+  def init[A](l: List[A]): List[A] =
+    l match{
+      case Nil => sys.error("init of empty list")
+      case Cons(_, Nil)  => Nil
+      case Cons(h, t) => Cons(h, init(t))
+    }
+  //这里的逻辑就是当遇到最后一个元素的时候把前面的元素都复制
+  def init2[A](l: List[A]): List[A] = {
+    import collection.mutable.ListBuffer
+    val buf = new ListBuffer[A]
+    @annotation.tailrec
+    def go(cur: List[A]): List[A] = cur match {
+      case Nil => sys.error("init of empty list")
+//      case Cons(_, Nil) => List(buf.toList*)   不知道导入那个
+      case Cons(h, t) => buf += h; go(t)
+    }
+    go(l)
+  }
+
+
+  def dropWhileCurry[A](l:List[A])(f:A=> Boolean):List[A]= {
+    //match 的case 后面居然还能带if
+    l match {
+      case Cons(h,t) if f(h) => dropWhileCurry(t)(f)
+      case _=> l
+    }
   }
 
 

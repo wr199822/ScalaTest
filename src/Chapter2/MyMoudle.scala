@@ -44,12 +44,13 @@ object MyMoudle {
   def isSorted[A](as: Array[A], ordered: (A,A)=> Boolean): Boolean ={
     @annotation.tailrec
     def loop(n: Int): Boolean = {
-      if (n==as.length) true
+      if (n<1) true
       else if (ordered(as(n-1),as(n))) loop(n + 1)
       else false
     }
 
     if (as.length < 1) throw new Exception("Array length cannot lt 1")
+    else if(as.length == 1) true
     else loop(1)
   }
 

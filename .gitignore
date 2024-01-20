@@ -1,1 +1,8 @@
 /out/
+/.idea/.gitignore
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/codeStyles/Project.xml
+/ScalaTest.iml
+/.idea/vcs.xml
