@@ -35,10 +35,11 @@ object List {
     case Cons(_, tailList) => tailList
   }
   //3.3
-  def setHead[A](head:A,list: List[A]): List[A] = list match {
-    case Nil => Cons(head,Nil) // 空列表返回空列表
-    case Cons(h,t) => Cons(head,Cons(h,t))
+  def setHead[A](l: List[A], h: A): List[A] = l match{
+    case Nil => sys.error("setHead on empty list")
+    case Cons(_, t) => Cons(h, t)
   }
+
 
   //3.4
   def drop[A](list: List[A],n:Int):List[A] = {
@@ -108,4 +109,78 @@ object List {
   }
 
 
+  def foldRight[A,B](as:List[A],z:B)(f:(A,B)=>B):B =
+    as match {
+      case Nil => z
+      case Cons(x,xs) => f(x,foldRight(xs,z)(f))
+    }
+
+  def sum2(ns:List[Int]) =
+    foldRight(ns,0)((x,y)=>x+y)
+
+  def product2(ns: List[Double]) =
+    foldRight(ns, 1.0)(_*_)
+
+  //3.7
+  //3.8
+  //3.9
+  def length[A](as:List[A]):Int=
+    foldRight(as,0)((_,acc)=>acc+1)
+  def length2[A](as:List[A]):Int= as match {
+    case Nil => 0
+    case Cons(_,t)=>length2(t)+1
+  }
+
+  //3.10
+  @annotation.tailrec
+  def foldLeft[A, B](as: List[A], z: B)(f: (B,A) => B): B =
+    as match {
+      case Nil => z
+      case Cons(x, xs) => foldLeft(xs,f(z,x))(f)
+    }
+
+  //3.11
+  def sum3(ns: List[Int]) =
+    foldLeft(ns, 0)((x, y) => x + y)
+
+  def product3(ns: List[Double]) =
+    foldLeft(ns, 1.0)(_ * _)
+
+  def length3[A](as: List[A]): Int =
+    foldLeft(as, 0)((x,_)=>x+1)
+
+  //3.12
+  def reverse[A](as:List[A]):List[A] =
+    foldLeft(as, List[A]())((acc:List[A],h) => Cons(h,acc))
+
+
+  def reverse2[A](l: List[A]): List[A] = {
+    def reverseHelper(original: List[A], reversed: List[A]): List[A] = original match {
+      case Nil => reversed
+      case Cons(h, t) => reverseHelper(t, Cons(h, reversed))
+    }
+
+    reverseHelper(l, Nil)
+  }
+
+  //3.13  不会
+
+  //3.14
+  def append2Right[A](a1: List[A], a2: List[A]): List[A] =
+    foldRight(a1,a2)(Cons(_,_))
+
+  def append2Left[A](a1: List[A], a2: List[A]): List[A] =
+    foldLeft(reverse(a1),a2)((x:List[A],y:A)=>Cons(y,x))
+
+  //3.15
+  def concat[A](l: List[List[A]]): List[A] =
+    foldRight(l, Nil:List[A])(append)
+
+  //有点绕 有机会在想
+//  def concatLeft[A](l: List[List[A]]): List[A] =
+//    foldLeft(reverse(l), Nil: List[A])(append2Left)
+  def concat2[A](l: List[List[A]]): List[A] = l match {
+    case Nil => List()
+    case Cons(head,tail)=> append(head,concat2(tail))
+  }
 }
